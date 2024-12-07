@@ -25,6 +25,8 @@ list(df_final.columns)
 df_final.describe
 df_final.shape
 
+df_final.to_parquet("aih2022.parquet", index=False)
+
 #filtrando para IAM e AVC:
 diag_codigos = ['I21', 'I22', 'I23', 'I61', 'I62', 'I64']
 df_filtrado = df_final[df_final['DIAG_PRINC'].str.startswith(tuple(diag_codigos))]
@@ -47,3 +49,5 @@ df_municipio = df_filtrado.groupby('res_MUNCOD').agg(
     qtd_instru_reportada=('INSTRU', lambda x: x.notnull().sum()),  # Quantidade de internações com grau de instrução preenchido
     qtd_internacoes_instru=('INSTRU', 'size')  # Quantidade de internações por valor de INSTRU
 ).reset_index()
+
+df_filtrado.head()
