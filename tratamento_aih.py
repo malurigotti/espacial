@@ -50,4 +50,5 @@ df_municipio = df_filtrado.groupby('res_MUNCOD').agg(
     qtd_internacoes_instru=('INSTRU', 'size')  # Quantidade de internações por valor de INSTRU
 ).reset_index()
 
-df_filtrado.head()
+pd.value_counts(df_final['RACA_COR'])
+df_final.__len__
